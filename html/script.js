@@ -1,47 +1,75 @@
-window.onload = function() {
-	var rectangle1 = document.getElementById("rectangle1");
-    var rectangle2 = document.getElementById("rectangle2");
-    var timer1, timer2;
+let selectedRect = null;
+let hoverTime = 0;
 
+function setup() {
+  createCanvas(400, 400);
+}
 
-    function eventRedirect(rectangle, redirectpage) {
-		rectangle.style.backgroundColor = "red";
-		return setTimeout(function() {
-			window.location.href = redirectpage;
-		}, 5000);
-	}
-
-    function cancelTimer(timer){
-        if(timer){
-            clearTimeout(timer);
-            timer=null;
+function draw(){
+  background(220);
+  
+  // Draw the first rectangle
+  if (selectedRect === 1) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 0, 200);
+  }
+  rect(50, 50, 150, 100);
+  
+  // Draw the second rectangle
+  if (selectedRect === 2) {
+    fill(255, 0, 0);
+  } else {
+    fill(0, 0, 200);
+  }
+  rect(200, 50, 150, 100);
+  
+  // Add text to the first rectangle
+  fill(255);
+  textSize(20);
+  textAlign(CENTER, CENTER);
+  text("Option1", 125, 100);
+  
+  // Add text to the second rectangle
+  fill(255);
+  textSize(20);
+  textAlign(CENTER, CENTER);
+  text("Option2", 275, 100);
+  
+  // Check if mouse is over a rectangle and start timing
+  if (selectedRect !== null) {
+        hoverTime++;
+        if (hoverTime >= 5000 && selectedRect===1) {
+        redirectToPage1();
+        } 
+        else if (hoverTime >= 5000 && selectedRect===2) {
+        redirectToPage2();
         }
-    }
+    } else {
+    hoverTime = 0;
+  }
+}
 
-    function redirect(page) {
-        setTimeout(function() {
-          window.location.href = page;
-        }, 5000);
-      }
-      
+//now working on mouseX and mouseY
+function selection() {
+  if (mouseX > 50 && mouseX < 200 && mouseY > 50 && mouseY < 150) {
+    selectedRect = 1;
+  } else if (mouseX > 200 && mouseX < 350 && mouseY > 50 && mouseY < 150) {
+    selectedRect = 2;
+  } else {
+    selectedRect = null;
+  }
+}
 
-    rectangle1.addEventListener("mouseover", function(){
-		timer2 = cancelTimer(timer2);
-		timer1 = eventRedirect(rectangle1, "result1.html");
-	});
+function redirectToPage1() {
+  window.location.href = "results.html";
+}
 
-	rectangle2.addEventListener("mouseover", function() {
-		timer1 = cancelTimer(timer1);
-		timer2 = eventRedirect(rectangle2, "result2.html");
-	});
+function redirectToPage2() {
+    window.location.href = "results2.html";
+}
 
-	rectangle1.addEventListener("mouseout", function() {
-		cancelTimer(timer1);
-		rectangle1.style.backgroundColor = "blue";
-	});
 
-	rectangle2.addEventListener("mouseout", function() {
-		cancelTimer(timer2);
-		rectangle2.style.backgroundColor = "blue";
-	});
-};
+
+
+
