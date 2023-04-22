@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html> 
+  <head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's AKW Listening To?</title>
+ 
+    <style>
+      /* Apply a pleasing color scheme */
+      body {
+        background-color: #f7f7f7;
+        color: #333;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      #answer-container {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+      }
+
+      /* Use consistent typography */
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      h1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-top: 50px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      #answer-container {
+        margin-top: 50px;
+      }
+
+      @media (max-width: 767px) {
+        h1 {
+          font-size: 24px;
+          margin-top: 20px;
+        }
+
+        #answer-container {
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="titlecontainer">
+        <h1 style="text-align:center">Quiz ##</h1>
+      </div>
+      <div id="answer-container"></div>
+    </div>
+    
+    <script src="p5.js"></script>
+    <script src="script.js"></script>
+
+    <script type="text/javascript">
+      setTimeout(function() {
+        window.location.href = "error.html";
+      }, 20000);
+    </script>
+  </body>
+</html>
+
